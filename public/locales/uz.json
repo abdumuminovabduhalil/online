@@ -1,3 +1,9 @@
 {
-  "contactText": "Aloqa"
+  "about": "Biz haqimizda",
+  "contactText": "Aloqa",
+  "login": "Kirish",
+  "register": "Ro'yxatdan o'tish",
+  "home": "Bosh sahifa",
+  "likes": "Sevimlilar",
+  "cart": "Savat"
 }
