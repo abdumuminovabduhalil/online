@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRegHeart, FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 import { HiArrowRight } from "react-icons/hi";
+import { useAuth } from "../context/AuthContext";
+import AuthModal from "../components/AuthModal";
 
 const PRODUCTS = [
   { id: 1, name: "Кроссовки Nike Air Max", price: 1490000, oldPrice: 1890000, category: "Обувь", emoji: "👟", rating: 4.8, reviews: 124 },
@@ -15,18 +17,35 @@ const PRODUCTS = [
 ];
 
 const CATEGORIES = ["Все", "Электроника", "Одежда", "Обувь", "Аксессуары", "Мебель", "Техника", "Спорт"];
-
 const fmt = (n) => n.toLocaleString("ru-RU") + " сум";
 
 export default function Home() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [liked, setLiked] = useState({});
   const [cart, setCart] = useState({});
   const [activeCategory, setActiveCategory] = useState("Все");
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [pendingCartId, setPendingCartId] = useState(null);
 
   const toggleLike = (id) => setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
-  const addToCart = (id) => setCart((prev) => ({ ...prev, [id]: true }));
+
+  const handleAddToCart = (id) => {
+    if (!user) {
+      setPendingCartId(id);
+      setShowAuthModal(true);
+      return;
+    }
+    setCart((prev) => ({ ...prev, [id]: true }));
+  };
+
+  const handleAuthSuccess = () => {
+    if (pendingCartId) {
+      setCart((prev) => ({ ...prev, [pendingCartId]: true }));
+      setPendingCartId(null);
+    }
+  };
 
   const filtered = PRODUCTS.filter((p) => {
     const matchCat = activeCategory === "Все" || p.category === activeCategory;
@@ -62,7 +81,7 @@ export default function Home() {
               onChange={(e) => setSearch(e.target.value)}
               className="flex-1 px-5 py-3 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-white/40 text-sm"
             />
-            <button className="px-6 py-3 rounded-xl bg-white text-violet-700 font-bold text-sm hover:bg-yellow-300 hover:text-violet-800 transition-all duration-200 flex items-center gap-2 justify-center cursor-pointer">
+            <button className="px-6 py-3 rounded-xl bg-white text-violet-700 font-bold text-sm hover:bg-yellow-300 hover:text-violet-800 transition-all duration-200 flex items-center gap-2 justify-center cursor-pointer border-none">
               Найти <HiArrowRight size={16} />
             </button>
           </div>
@@ -72,12 +91,7 @@ export default function Home() {
       {/* STATS */}
       <section className="bg-white dark:bg-zinc-900 border-b border-gray-100 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-          {[
-            ["50 000+", "Товаров"],
-            ["12 000+", "Покупателей"],
-            ["3 200+", "Продавцов"],
-            ["4.9 ★", "Рейтинг"],
-          ].map(([val, label]) => (
+          {[["50 000+", "Товаров"], ["12 000+", "Покупателей"], ["3 200+", "Продавцов"], ["4.9 ★", "Рейтинг"]].map(([val, label]) => (
             <div key={label}>
               <p className="text-2xl font-black text-violet-600 dark:text-violet-400">{val}</p>
               <p className="text-xs text-gray-400 dark:text-zinc-500 mt-0.5">{label}</p>
@@ -90,17 +104,11 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Популярные товары</h2>
-          {/* Category filters */}
           <div className="flex gap-2 flex-wrap">
             {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
+              <button key={cat} onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer border
-                  ${activeCategory === cat
-                    ? "bg-violet-600 text-white border-violet-600"
-                    : "bg-white dark:bg-zinc-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-zinc-700 hover:border-violet-300"}`}
-              >
+                  ${activeCategory === cat ? "bg-violet-600 text-white border-violet-600" : "bg-white dark:bg-zinc-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-zinc-700 hover:border-violet-300"}`}>
                 {cat}
               </button>
             ))}
@@ -108,62 +116,43 @@ export default function Home() {
         </div>
 
         {filtered.length === 0 ? (
-          <div className="text-center py-20 text-gray-400 dark:text-zinc-600">
+          <div className="text-center py-20 text-gray-400">
             <p className="text-4xl mb-3">🔍</p>
             <p className="text-lg font-medium">Ничего не найдено</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {filtered.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-100 dark:border-zinc-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
-              >
-                {/* Image area */}
+              <div key={product.id}
+                className="bg-white dark:bg-zinc-900 rounded-2xl border border-gray-100 dark:border-zinc-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                 <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-zinc-800 dark:to-zinc-700 h-44 flex items-center justify-center">
                   <span className="text-6xl group-hover:scale-110 transition-transform duration-300">{product.emoji}</span>
-
                   {product.oldPrice && (
                     <span className="absolute top-3 left-3 bg-rose-500 text-white text-xs font-bold px-2 py-0.5 rounded-lg">
                       -{Math.round((1 - product.price / product.oldPrice) * 100)}%
                     </span>
                   )}
-
-                  <button
-                    onClick={() => toggleLike(product.id)}
-                    className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer"
-                  >
-                    {liked[product.id]
-                      ? <FaHeart size={13} className="text-rose-500" />
-                      : <FaRegHeart size={13} className="text-gray-400" />}
+                  <button onClick={() => toggleLike(product.id)}
+                    className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center hover:scale-110 transition-all cursor-pointer">
+                    {liked[product.id] ? <FaHeart size={13} className="text-rose-500" /> : <FaRegHeart size={13} className="text-gray-400" />}
                   </button>
                 </div>
 
-                {/* Info */}
                 <div className="p-4">
-                  <p className="text-xs text-violet-500 dark:text-violet-400 font-semibold mb-1">{product.category}</p>
+                  <p className="text-xs text-violet-500 font-semibold mb-1">{product.category}</p>
                   <p className="text-sm font-semibold text-gray-900 dark:text-white leading-snug mb-2 line-clamp-2">{product.name}</p>
-
                   <div className="flex items-center gap-1.5 mb-3">
                     <FaStar size={11} className="text-yellow-400" />
                     <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">{product.rating}</span>
                     <span className="text-xs text-gray-400">({product.reviews})</span>
                   </div>
-
                   <div className="flex items-end gap-2 mb-3">
                     <span className="text-base font-black text-gray-900 dark:text-white">{fmt(product.price)}</span>
-                    {product.oldPrice && (
-                      <span className="text-xs text-gray-400 line-through">{fmt(product.oldPrice)}</span>
-                    )}
+                    {product.oldPrice && <span className="text-xs text-gray-400 line-through">{fmt(product.oldPrice)}</span>}
                   </div>
-
-                  <button
-                    onClick={() => addToCart(product.id)}
-                    className={`w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer
-                      ${cart[product.id]
-                        ? "bg-green-500 text-white"
-                        : "bg-violet-600 hover:bg-violet-700 text-white"}`}
-                  >
+                  <button onClick={() => handleAddToCart(product.id)}
+                    className={`w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer border-none
+                      ${cart[product.id] ? "bg-green-500 text-white" : "bg-violet-600 hover:bg-violet-700 text-white"}`}>
                     <FaShoppingCart size={13} />
                     {cart[product.id] ? "Добавлено ✓" : "В корзину"}
                   </button>
@@ -181,14 +170,20 @@ export default function Home() {
             <h3 className="text-2xl sm:text-3xl font-black mb-2">Стань продавцом!</h3>
             <p className="text-white/70 text-sm max-w-sm">Продавайте свои товары миллионам покупателей. Регистрация бесплатно.</p>
           </div>
-          <button
-            onClick={() => navigate("/register")}
-            className="px-8 py-3 rounded-xl bg-white text-violet-700 font-bold text-sm hover:bg-yellow-300 hover:text-violet-800 transition-all duration-200 whitespace-nowrap cursor-pointer"
-          >
+          <button onClick={() => navigate("/register")}
+            className="px-8 py-3 rounded-xl bg-white text-violet-700 font-bold text-sm hover:bg-yellow-300 hover:text-violet-800 transition-all duration-200 whitespace-nowrap cursor-pointer border-none">
             Начать продавать →
           </button>
         </div>
       </section>
+
+      {/* AUTH MODAL */}
+      {showAuthModal && (
+        <AuthModal
+          onClose={() => { setShowAuthModal(false); setPendingCartId(null); }}
+          onSuccess={handleAuthSuccess}
+        />
+      )}
     </div>
   );
 }

@@ -1,9 +1,2 @@
-{
-  "about": "О нас",
-  "contactText": "Контакты",
-  "login": "Войти",
-  "register": "Регистрация",
-  "home": "Главная",
-  "likes": "Избранное",
-  "cart": "Корзина"
-}
+{ "about": "About", "contactText": "Contact", "login": "Login", "register": "Register" }
+  

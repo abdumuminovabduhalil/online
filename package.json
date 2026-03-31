@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch ./server/db.json --prot 3001"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",

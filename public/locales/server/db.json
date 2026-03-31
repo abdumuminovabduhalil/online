@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "userId": 1,
+            "name": "Alijon",
+            "phone": 998777886655,
+            "password": "user123",
+            "role": "user"
+        }
+    ],
+    "products": [],
+    "carousels": [],
+    "likes": [],
+    "buys": []
+}
