@@ -17,8 +17,8 @@ export default function Contact() {
         <div className="flex flex-col gap-5">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">Наши контакты</h2>
           {[
-            { icon: <FaPhone />, label: "Телефон", value: "+998 90 123 45 67" },
-            { icon: <FaEnvelope />, label: "Email", value: "info@market.uz" },
+            { icon: <FaPhone />, label: "Телефон", value: "+998 97 777 77 77" },
+            { icon: <FaEnvelope />, label: "Email", value: "abdumuminovabduhalil2000@gmail.com" },
             { icon: <FaMapMarkerAlt />, label: "Адрес", value: "г. Ташкент, ул. Амира Темура, 15" },
           ].map(({ icon, label, value }) => (
             <div key={label} className="flex items-start gap-4 bg-white dark:bg-zinc-900 rounded-2xl border border-gray-100 dark:border-zinc-800 p-5">

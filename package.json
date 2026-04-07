@@ -8,10 +8,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch ./server/db.json --prot 3001"
+    "server": "json-server --watch ./server/db.json --port 3001"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "@tanstack/react-query": "^5.96.1",
+    "axios": "^1.14.0",
+    "bcryptjs": "^3.0.3",
     "i18next": "^25.8.18",
     "i18next-browser-languagedetector": "^8.2.1",
     "i18next-http-backend": "^3.0.2",

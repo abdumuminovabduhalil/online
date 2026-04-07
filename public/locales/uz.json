@@ -1,1 +1,142 @@
-{ "about": "Biz haqimizda", "contactText": "Aloqa", "login": "Kirish", "register": "Ro'yxatdan o'tish" }
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa",
+    "likes": "Sevimlilar",
+    "cart": "Savat",
+    "login": "Kirish",
+    "register": "Ro'yxatdan o'tish",
+    "logout": "Chiqish",
+    "admin": "Admin paneli",
+    "seller": "Sotuvchi kabineti"
+  },
+  "hero": {
+    "badge": "🎉 500 000 so'mdan bepul yetkazib berish",
+    "title": "Kerakli hamma narsani toping",
+    "titleHighlight": "bir joyda",
+    "subtitle": "Ishonchli sotuvchilardan minglab mahsulotlar. O'zbekiston bo'ylab tez yetkazib berish.",
+    "searchPlaceholder": "Mahsulot qidirish...",
+    "searchBtn": "Qidirish"
+  },
+  "stats": {
+    "products": "Mahsulot",
+    "buyers": "Xaridor",
+    "sellers": "Sotuvchi",
+    "rating": "Reyting"
+  },
+  "products": {
+    "title": "Mashhur mahsulotlar",
+    "all": "Hammasi",
+    "addToCart": "Savatga",
+    "added": "Qo'shildi ✓",
+    "notFound": "Hech narsa topilmadi",
+    "reviews": "sharh"
+  },
+  "banner": {
+    "title": "Sotuvchi bo'ling!",
+    "subtitle": "Mahsulotlaringizni millionlab xaridorlarga soting. Ro'yxatdan o'tish bepul.",
+    "btn": "Sotishni boshlash →"
+  },
+  "auth": {
+    "loginTitle": "Xush kelibsiz",
+    "loginSubtitle": "Hisobingizga kiring",
+    "registerTitle": "Hisob yaratish",
+    "registerSubtitle": "Bizga qo'shiling",
+    "email": "Email",
+    "password": "Parol",
+    "confirmPassword": "Parolni tasdiqlang",
+    "name": "Ism",
+    "namePlaceholder": "Ismingiz",
+    "emailPlaceholder": "example@mail.com",
+    "passwordPlaceholder": "••••••••",
+    "loginBtn": "Kirish",
+    "registerBtn": "Ro'yxatdan o'tish",
+    "loading": "Yuklanmoqda...",
+    "noAccount": "Hisob yo'qmi?",
+    "hasAccount": "Hisobingiz bormi?",
+    "passwordMismatch": "Parollar mos kelmaydi",
+    "wrongCredentials": "Email yoki parol noto'g'ri",
+    "emailTaken": "Bu email allaqachon ro'yxatdan o'tgan",
+    "testAccounts": "💡 Test hisoblar:",
+    "modalTitle": "Hisobingizga kiring",
+    "modalSubtitle": "Savatga qo'shish uchun tizimga kiring",
+    "modalRegSubtitle": "Ro'yxatdan o'tish bir daqiqadan kam vaqt oladi",
+    "loggedAs": "Tizimga kirdingiz",
+    "phone": "Telefon raqami",
+    "phoneTaken": "Bu telefon allaqachon ro'yxatdan o'tgan",
+    "passwordShort": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
+    "wrongCreds": "Noto'g'ri email/telefon yoki parol",
+    "namePh": "Ismingiz",
+    "passPh": "Kamida 6 ta belgi",
+    "fillAll": "Barcha maydonlarni to'ldiring",
+    "passShort": "Parol kamida 6 ta belgi",
+    "passMismatch": "Parollar mos kelmaydi",
+    "regTitle": "Hisob yaratish",
+    "regSub": "Tez ro'yxatdan o'tish",
+    "regBtn": "Ro'yxatdan o'tish",
+    "pass": "Parol",
+    "confirm": "Parolni tasdiqlang",
+    "noAcc": "Hisob yo'qmi?",
+    "hasAcc": "Hisobingiz bormi?"
+  },
+  "about": {
+    "title": "Biz haqimizda",
+    "subtitle": "Biz O'zbekiston xaridorlari va sotuvchilari uchun eng yaxshi bozorni yaratmoqdamiz",
+    "mission": "Bizning vazifamiz",
+    "missionText": "O'zbekistonning har bir fuqarosi uchun onlayn savdoni qulay va imkonli qilish.",
+    "vision": "Bizning ko'rishimiz",
+    "visionText": "2027 yilga qadar Markaziy Osiyoning yetakchi bozori bo'lish.",
+    "values": "Bizning qadriyatlarimiz",
+    "valuesText": "Halollik, shaffoflik va har bir mijozga g'amxo'rlik — ishimizning asosi.",
+    "team": "Bizning jamoa"
+  },
+  "contact": {
+    "title": "Aloqa",
+    "subtitle": "Biz bilan bog'laning — biz har doim yordam berishga tayyormiz",
+    "ourContacts": "Bizning kontaktlar",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Manzil",
+    "addressValue": "Toshkent, Amir Temur ko'chasi, 15",
+    "writeUs": "Bizga yozing",
+    "yourName": "Ism",
+    "yourEmail": "Email",
+    "message": "Xabar",
+    "messagePlaceholder": "Xabaringiz...",
+    "send": "Yuborish",
+    "sent": "Xabar yuborildi!",
+    "sentSubtitle": "Biz 24 soat ichida javob beramiz",
+    "sendMore": "Yana yozish"
+  },
+  "likes": {
+    "title": "Sevimlilar",
+    "count": "ta mahsulot sevimlilarda",
+    "empty": "Ro'yxat bo'sh",
+    "emptySubtitle": "Yurak belgisini bosib mahsulot qo'shing",
+    "toCatalog": "Katalogga o'tish"
+  },
+  "cart": {
+    "title": "Savat",
+    "positions": "ta mahsulot",
+    "empty": "Savat bo'sh",
+    "emptySubtitle": "Katalogdan mahsulot qo'shing",
+    "toCatalog": "Katalogga",
+    "total": "Jami",
+    "checkout": "Buyurtma berish",
+    "ordered": "Buyurtma berildi!",
+    "orderedSubtitle": "Tasdiqlash uchun siz bilan bog'lanamiz",
+    "backHome": "Bosh sahifaga"
+  },
+  "notFound": {
+    "title": "Sahifa topilmadi",
+    "subtitle": "Bunday sahifa mavjud emas",
+    "btn": "Bosh sahifaga"
+  },
+  "footer": {
+    "description": "Onlayn tovar sotib olish va sotish uchun zamonaviy bozor.",
+    "navigation": "Navigatsiya",
+    "account": "Hisob",
+    "rights": "© 2025 Market. Barcha huquqlar himoyalangan."
+  }
+}

@@ -1,2 +1,137 @@
-{ "about": "About", "contactText": "Contact", "login": "Login", "register": "Register" }
-  
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "likes": "Wishlist",
+    "cart": "Cart",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "admin": "Admin Panel",
+    "seller": "Seller Dashboard"
+  },
+  "hero": {
+    "badge": "🎉 Free delivery from 500,000 sum",
+    "title": "Find everything you need",
+    "titleHighlight": "in one place",
+    "subtitle": "Thousands of products from verified sellers. Fast delivery across Uzbekistan.",
+    "searchPlaceholder": "Search products...",
+    "searchBtn": "Search"
+  },
+  "stats": {
+    "products": "Products",
+    "buyers": "Buyers",
+    "sellers": "Sellers",
+    "rating": "Rating"
+  },
+  "products": {
+    "title": "Popular Products",
+    "all": "All",
+    "addToCart": "Add to Cart",
+    "added": "Added ✓",
+    "notFound": "Nothing found",
+    "reviews": "reviews"
+  },
+  "banner": {
+    "title": "Become a seller!",
+    "subtitle": "Sell your products to millions of buyers. Registration is free.",
+    "btn": "Start selling →"
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Sign in to your account",
+    "registerTitle": "Create account",
+    "registerSubtitle": "Join us today",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "example@mail.com",
+    "passwordPlaceholder": "••••••••",
+    "loginBtn": "Login",
+    "registerBtn": "Register",
+    "loading": "Loading...",
+    "noAccount": "No account?",
+    "hasAccount": "Already have an account?",
+    "passwordMismatch": "Passwords do not match",
+    "wrongCredentials": "Invalid email or password",
+    "emailTaken": "Email is already in use",
+    "testAccounts": "💡 Test accounts:",
+    "modalTitle": "Sign in to your account",
+    "modalSubtitle": "You need to login to add items to cart",
+    "modalRegSubtitle": "Registration takes less than a minute",
+    "loggedAs": "Logged in as",
+    "phone": "Phone number",
+    "phoneTaken": "This phone is already registered",
+    "passwordShort": "Password must be at least 6 characters",
+    "wrongCreds": "Wrong email/phone or password",
+    "namePh": "Your name",
+    "passPh": "Min. 6 characters",
+    "fillAll": "Fill all fields",
+    "passShort": "Password min. 6 characters",
+    "passMismatch": "Passwords do not match",
+    "regTitle": "Create account",
+    "regSub": "Quick registration"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "We are building the best marketplace for buyers and sellers in Uzbekistan",
+    "mission": "Our Mission",
+    "missionText": "To make online commerce accessible and convenient for every resident of Uzbekistan.",
+    "vision": "Our Vision",
+    "visionText": "To become the leading marketplace in Central Asia by 2027.",
+    "values": "Our Values",
+    "valuesText": "Honesty, transparency and care for every customer are the foundation of our work.",
+    "team": "Our Team"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch — we are always happy to help",
+    "ourContacts": "Our contacts",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "Tashkent, Amir Temur st., 15",
+    "writeUs": "Write to us",
+    "yourName": "Name",
+    "yourEmail": "Email",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "send": "Send",
+    "sent": "Message sent!",
+    "sentSubtitle": "We will reply within 24 hours",
+    "sendMore": "Send another"
+  },
+  "likes": {
+    "title": "Wishlist",
+    "count": "items in wishlist",
+    "empty": "List is empty",
+    "emptySubtitle": "Add products by clicking the heart icon",
+    "toCatalog": "Go to catalog"
+  },
+  "cart": {
+    "title": "Cart",
+    "positions": "items",
+    "empty": "Cart is empty",
+    "emptySubtitle": "Add products from the catalog",
+    "toCatalog": "To catalog",
+    "total": "Total",
+    "checkout": "Checkout",
+    "ordered": "Order placed!",
+    "orderedSubtitle": "We will contact you to confirm",
+    "backHome": "Back to home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "This page does not exist",
+    "btn": "Go home"
+  },
+  "footer": {
+    "description": "Modern marketplace for buying and selling goods online.",
+    "navigation": "Navigation",
+    "account": "Account",
+    "rights": "© 2025 Market. All rights reserved."
+  }
+}
