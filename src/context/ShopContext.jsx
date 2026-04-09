@@ -41,6 +41,12 @@ export function ShopProvider({ children }) {
     setLikes(prev => prev.filter(i => i.id !== id));
   };
 
+  const editProduct = (id, updates) => {
+    setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
+    // Обновить и в корзине если там есть
+    setCart(prev => prev.map(i => i.id === id ? { ...i, ...updates } : i));
+  };
+
   // ── CART ─────────────────────────────────────
   const addToCart = (product) => {
     setCart(prev => {
@@ -79,6 +85,11 @@ export function ShopProvider({ children }) {
     return order;
   };
 
+  // ── ОБНОВИТЬ СТАТУС ЗАКАЗА ────────────────────
+  const updateOrderStatus = (id, status) => {
+    setOrders(prev => prev.map(o => o.id === id ? { ...o, status } : o));
+  };
+
   // ── LIKES ─────────────────────────────────────
   const toggleLike = (product) => setLikes(prev => prev.find(i => i.id === product.id) ? prev.filter(i => i.id !== product.id) : [...prev, product]);
   const isLiked = (id) => likes.some(i => i.id === id);
@@ -86,10 +97,10 @@ export function ShopProvider({ children }) {
 
   return (
     <ShopContext.Provider value={{
-      products, addProduct, deleteProduct,
+      products, addProduct, deleteProduct, editProduct,
       cart, addToCart, removeFromCart, updateQty, isInCart, cartTotal, cartCount,
       likes, toggleLike, isLiked, removeLike,
-      orders, checkout,
+      orders, checkout, updateOrderStatus,
     }}>
       {children}
     </ShopContext.Provider>
