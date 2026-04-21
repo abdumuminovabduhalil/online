@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "displayName": "Администратор"
+    },
+    {
+      "id": "u1776748895646",
+      "username": "abduhalil",
+      "password": "abduhalil",
+      "role": "worker",
+      "displayName": "abduhalil",
+      "workerId": "w1776748930161"
+    }
+  ],
+  "workers": [
+    {
+      "id": "w1776748930161",
+      "name": "admin123",
+      "role": "admin123",
+      "telegram": "admin123",
+      "phone": "+123",
+      "status": "busy"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

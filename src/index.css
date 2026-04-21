@@ -1,6 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
-* { box-sizing: border-box; }
-body { font-family: 'Outfit', sans-serif; }
-html { scroll-behavior: smooth; }
+
+@theme {
+  /* Добавляем тот самый шаг 1.5, чтобы gap-1.5 работал */
+  --spacing-1_5: 0.375rem;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  :root { color-scheme: light dark; }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar { width: 5px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { 
+    background: rgba(100, 116, 139, 0.3); 
+    border-radius: 3px; 
+  }
+
+  /* Твои статусы */
+  .status-free {
+    @apply inline-flex items-center gap-1.5 text-emerald-400 text-xs font-semibold;
+  }
+  .status-busy {
+    @apply inline-flex items-center gap-1.5 text-rose-400 text-xs font-semibold;
+  }
+}
